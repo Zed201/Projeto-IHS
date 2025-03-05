@@ -1,0 +1,177 @@
+/*
+WARNING: Do NOT edit the input and output ports in this file in a text
+editor if you plan to continue editing the block that represents it in
+the Block Editor! File corruption is VERY likely to occur.
+*/
+/*
+Copyright (C) 2017  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details.
+*/
+(header "symbol" (version "1.1"))
+(symbol
+	(rect 0 0 640 560)
+	(text "pcihellocore" (rect 286 -1 330 11)(font "Arial" (font_size 10)))
+	(text "inst" (rect 8 544 20 556)(font "Arial" ))
+	(port
+		(pt 0 72)
+		(input)
+		(text "pcie_hard_ip_0_pcie_rstn_export" (rect 0 0 134 12)(font "Arial" (font_size 8)))
+		(text "pcie_hard_ip_0_pcie_rstn_export" (rect 4 61 190 72)(font "Arial" (font_size 8)))
+		(line (pt 0 72)(pt 272 72)(line_width 1))
+	)
+	(port
+		(pt 0 112)
+		(input)
+		(text "pcie_hard_ip_0_powerdown_pll_powerdown" (rect 0 0 173 12)(font "Arial" (font_size 8)))
+		(text "pcie_hard_ip_0_powerdown_pll_powerdown" (rect 4 101 232 112)(font "Arial" (font_size 8)))
+		(line (pt 0 112)(pt 272 112)(line_width 1))
+	)
+	(port
+		(pt 0 128)
+		(input)
+		(text "pcie_hard_ip_0_powerdown_gxb_powerdown" (rect 0 0 180 12)(font "Arial" (font_size 8)))
+		(text "pcie_hard_ip_0_powerdown_gxb_powerdown" (rect 4 117 232 128)(font "Arial" (font_size 8)))
+		(line (pt 0 128)(pt 272 128)(line_width 1))
+	)
+	(port
+		(pt 0 168)
+		(input)
+		(text "pcie_hard_ip_0_refclk_export" (rect 0 0 120 12)(font "Arial" (font_size 8)))
+		(text "pcie_hard_ip_0_refclk_export" (rect 4 157 172 168)(font "Arial" (font_size 8)))
+		(line (pt 0 168)(pt 272 168)(line_width 1))
+	)
+	(port
+		(pt 0 208)
+		(input)
+		(text "pcie_hard_ip_0_rx_in_rx_datain_0" (rect 0 0 140 12)(font "Arial" (font_size 8)))
+		(text "pcie_hard_ip_0_rx_in_rx_datain_0" (rect 4 197 196 208)(font "Arial" (font_size 8)))
+		(line (pt 0 208)(pt 272 208)(line_width 1))
+	)
+	(port
+		(pt 0 248)
+		(output)
+		(text "pcie_hard_ip_0_tx_out_tx_dataout_0" (rect 0 0 149 12)(font "Arial" (font_size 8)))
+		(text "pcie_hard_ip_0_tx_out_tx_dataout_0" (rect 4 237 208 248)(font "Arial" (font_size 8)))
+		(line (pt 0 248)(pt 272 248)(line_width 1))
+	)
+	(port
+		(pt 0 288)
+		(output)
+		(text "pio_0_lcd_external_connection_export[31..0]" (rect 0 0 175 12)(font "Arial" (font_size 8)))
+		(text "pio_0_lcd_external_connection_export[31..0]" (rect 4 277 262 288)(font "Arial" (font_size 8)))
+		(line (pt 0 288)(pt 272 288)(line_width 3))
+	)
+	(port
+		(pt 0 328)
+		(output)
+		(text "pio_1_display_l_external_connection_export[31..0]" (rect 0 0 198 12)(font "Arial" (font_size 8)))
+		(text "pio_1_display_l_external_connection_export[31..0]" (rect 4 317 298 328)(font "Arial" (font_size 8)))
+		(line (pt 0 328)(pt 272 328)(line_width 3))
+	)
+	(port
+		(pt 0 368)
+		(output)
+		(text "pio_2_display_r_external_connection_export[31..0]" (rect 0 0 201 12)(font "Arial" (font_size 8)))
+		(text "pio_2_display_r_external_connection_export[31..0]" (rect 4 357 298 368)(font "Arial" (font_size 8)))
+		(line (pt 0 368)(pt 272 368)(line_width 3))
+	)
+	(port
+		(pt 0 408)
+		(output)
+		(text "pio_3_switches_external_connection_export[31..0]" (rect 0 0 198 12)(font "Arial" (font_size 8)))
+		(text "pio_3_switches_external_connection_export[31..0]" (rect 4 397 292 408)(font "Arial" (font_size 8)))
+		(line (pt 0 408)(pt 272 408)(line_width 3))
+	)
+	(port
+		(pt 0 448)
+		(output)
+		(text "pio_4_push_b_external_connection_export[31..0]" (rect 0 0 195 12)(font "Arial" (font_size 8)))
+		(text "pio_4_push_b_external_connection_export[31..0]" (rect 4 437 280 448)(font "Arial" (font_size 8)))
+		(line (pt 0 448)(pt 272 448)(line_width 3))
+	)
+	(port
+		(pt 0 488)
+		(output)
+		(text "pio_5_r_leds_external_connection_export[31..0]" (rect 0 0 189 12)(font "Arial" (font_size 8)))
+		(text "pio_5_r_leds_external_connection_export[31..0]" (rect 4 477 280 488)(font "Arial" (font_size 8)))
+		(line (pt 0 488)(pt 272 488)(line_width 3))
+	)
+	(port
+		(pt 0 528)
+		(output)
+		(text "pio_6_g_leds_external_connection_export[31..0]" (rect 0 0 191 12)(font "Arial" (font_size 8)))
+		(text "pio_6_g_leds_external_connection_export[31..0]" (rect 4 517 280 528)(font "Arial" (font_size 8)))
+		(line (pt 0 528)(pt 272 528)(line_width 3))
+	)
+	(drawing
+		(text "pcie_hard_ip_0_pcie_rstn" (rect 121 43 386 99)(font "Arial" (color 128 0 0)(font_size 9)))
+		(text "export" (rect 277 67 590 144)(font "Arial" (color 0 0 0)))
+		(text "pcie_hard_ip_0_powerdown" (rect 108 83 360 179)(font "Arial" (color 128 0 0)(font_size 9)))
+		(text "pll_powerdown" (rect 277 107 632 224)(font "Arial" (color 0 0 0)))
+		(text "gxb_powerdown" (rect 277 123 632 256)(font "Arial" (color 0 0 0)))
+		(text "pcie_hard_ip_0_refclk" (rect 142 139 410 291)(font "Arial" (color 128 0 0)(font_size 9)))
+		(text "export" (rect 277 163 590 336)(font "Arial" (color 0 0 0)))
+		(text "pcie_hard_ip_0_rx_in" (rect 146 179 412 371)(font "Arial" (color 128 0 0)(font_size 9)))
+		(text "rx_datain_0" (rect 277 203 620 416)(font "Arial" (color 0 0 0)))
+		(text "pcie_hard_ip_0_tx_out" (rect 139 219 404 451)(font "Arial" (color 128 0 0)(font_size 9)))
+		(text "tx_dataout_0" (rect 277 243 626 496)(font "Arial" (color 0 0 0)))
+		(text "pio_0_lcd_external_connection" (rect 94 259 362 531)(font "Arial" (color 128 0 0)(font_size 9)))
+		(text "export" (rect 277 283 590 576)(font "Arial" (color 0 0 0)))
+		(text "pio_1_display_l_external_connection" (rect 61 299 332 611)(font "Arial" (color 128 0 0)(font_size 9)))
+		(text "export" (rect 277 323 590 656)(font "Arial" (color 0 0 0)))
+		(text "pio_2_display_r_external_connection" (rect 57 339 324 691)(font "Arial" (color 128 0 0)(font_size 9)))
+		(text "export" (rect 277 363 590 736)(font "Arial" (color 0 0 0)))
+		(text "pio_3_switches_external_connection" (rect 59 379 322 771)(font "Arial" (color 128 0 0)(font_size 9)))
+		(text "export" (rect 277 403 590 816)(font "Arial" (color 0 0 0)))
+		(text "pio_4_push_b_external_connection" (rect 67 419 326 851)(font "Arial" (color 128 0 0)(font_size 9)))
+		(text "export" (rect 277 443 590 896)(font "Arial" (color 0 0 0)))
+		(text "pio_5_r_leds_external_connection" (rect 73 459 338 931)(font "Arial" (color 128 0 0)(font_size 9)))
+		(text "export" (rect 277 483 590 976)(font "Arial" (color 0 0 0)))
+		(text "pio_6_g_leds_external_connection" (rect 71 499 334 1011)(font "Arial" (color 128 0 0)(font_size 9)))
+		(text "export" (rect 277 523 590 1056)(font "Arial" (color 0 0 0)))
+		(text " pcihellocore " (rect 587 544 1258 1098)(font "Arial" ))
+		(line (pt 272 32)(pt 368 32)(line_width 1))
+		(line (pt 368 32)(pt 368 544)(line_width 1))
+		(line (pt 272 544)(pt 368 544)(line_width 1))
+		(line (pt 272 32)(pt 272 544)(line_width 1))
+		(line (pt 273 52)(pt 273 76)(line_width 1))
+		(line (pt 274 52)(pt 274 76)(line_width 1))
+		(line (pt 273 92)(pt 273 132)(line_width 1))
+		(line (pt 274 92)(pt 274 132)(line_width 1))
+		(line (pt 273 148)(pt 273 172)(line_width 1))
+		(line (pt 274 148)(pt 274 172)(line_width 1))
+		(line (pt 273 188)(pt 273 212)(line_width 1))
+		(line (pt 274 188)(pt 274 212)(line_width 1))
+		(line (pt 273 228)(pt 273 252)(line_width 1))
+		(line (pt 274 228)(pt 274 252)(line_width 1))
+		(line (pt 273 268)(pt 273 292)(line_width 1))
+		(line (pt 274 268)(pt 274 292)(line_width 1))
+		(line (pt 273 308)(pt 273 332)(line_width 1))
+		(line (pt 274 308)(pt 274 332)(line_width 1))
+		(line (pt 273 348)(pt 273 372)(line_width 1))
+		(line (pt 274 348)(pt 274 372)(line_width 1))
+		(line (pt 273 388)(pt 273 412)(line_width 1))
+		(line (pt 274 388)(pt 274 412)(line_width 1))
+		(line (pt 273 428)(pt 273 452)(line_width 1))
+		(line (pt 274 428)(pt 274 452)(line_width 1))
+		(line (pt 273 468)(pt 273 492)(line_width 1))
+		(line (pt 274 468)(pt 274 492)(line_width 1))
+		(line (pt 273 508)(pt 273 532)(line_width 1))
+		(line (pt 274 508)(pt 274 532)(line_width 1))
+		(line (pt 0 0)(pt 640 0)(line_width 1))
+		(line (pt 640 0)(pt 640 560)(line_width 1))
+		(line (pt 0 560)(pt 640 560)(line_width 1))
+		(line (pt 0 0)(pt 0 560)(line_width 1))
+	)
+)
