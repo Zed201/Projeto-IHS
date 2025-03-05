@@ -100,7 +100,8 @@ enum perf_names_idx {
 	IDX_DISPLAYL,
 	IDX_DISPLAYR,
 	IDX_GREENLED,
-	IDX_REDLED
+	IDX_REDLED,
+	IDX_LCD
 };
 static int wr_name_idx = IDX_DISPLAYR;
 static int rd_name_idx = IDX_SWITCH;
@@ -231,29 +232,36 @@ static ssize_t my_write(struct file* filp, const char __user* buf, size_t count,
 
 static long int my_ioctl(struct file*, unsigned int cmd, unsigned long arg)
 {
+	// defini os endereços copiando mais ou menos o tutorial
 	switch(cmd){
-	case RD_SWITCHES:
-		read_pointer = bar0_mmio + 0xC080; //TODO: update offset
-		rd_name_idx = IDX_SWITCH;
+	// o lcd precisa apenas de 12 bits, mas temos 32
+	case WR_LCD_DISPLAY:
+		write_pointer = bar0_mmio + 0xC000; //TODO: update offset
+		wr_name_idx = IDX_LCD;
 		break;
-	case RD_PBUTTONS:
-		read_pointer = bar0_mmio + 0xC0A0; //TODO: update offset
-		rd_name_idx = IDX_PBUTTONS;
-		break;
+	// so pega de 32 em 32 bits, o hex ele deve ter 49 entao precisa de 2
 	case WR_L_DISPLAY:
 		write_pointer = bar0_mmio + 0xC020; //TODO: update offset
 		wr_name_idx = IDX_DISPLAYL;
 		break;
 	case WR_R_DISPLAY:
-		write_pointer = bar0_mmio + 0xC000; //TODO: update offset
-		wr_name_idx = IDX_DISPLAYR;
-		break;
-	case WR_RED_LEDS:
 		write_pointer = bar0_mmio + 0xC040; //TODO: update offset
 		wr_name_idx = IDX_DISPLAYR;
 		break;
+	case RD_SWITCHES:
+		read_pointer = bar0_mmio + 0xC060; //TODO: update offset
+		rd_name_idx = IDX_SWITCH;
+		break;
+	case RD_PBUTTONS:
+		read_pointer = bar0_mmio + 0xC080; //TODO: update offset
+		rd_name_idx = IDX_PBUTTONS;
+		break;
+	case WR_RED_LEDS:
+		write_pointer = bar0_mmio + 0xC0A0; //TODO: update offset
+		wr_name_idx = IDX_DISPLAYR;
+		break;
 	case WR_GREEN_LEDS:
-		write_pointer = bar0_mmio + 0xC060; //TODO: update offset
+		write_pointer = bar0_mmio + 0xC0C0; //TODO: update offset
 		wr_name_idx = IDX_DISPLAYR;
 		break;
 	default:
