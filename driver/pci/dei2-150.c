@@ -18,7 +18,7 @@ MODULE_DESCRIPTION("simple pci driver for DE2i-150 dev board");
 
 /* driver constants */
 
-#define DRIVER_NAME      "my_driver"
+#define DRIVER_NAME      "dev"
 #define FILE_NAME        "mydev"
 #define DRIVER_CLASS     "MyModuleClass"
 #define MY_PCI_VENDOR_ID  0x1172
@@ -91,7 +91,8 @@ static const char* peripheral[] = {
 	"display_l",
 	"display_r",
 	"green_leds",
-	"red_leds"
+	"red_leds",
+	"lcd_display",
 };
 
 enum perf_names_idx {
@@ -126,7 +127,7 @@ static int __init my_init(void)
 	printk("my_driver: device number %d was registered!\n", MAJOR(my_device_nbr));
 
 	/* 2. create class : appears at /sys/class */
-	if ((my_class = class_create(THIS_MODULE, DRIVER_CLASS)) == NULL) {
+	if ((my_class = class_create(DRIVER_CLASS)) == NULL) {
 		printk("my_driver: device class count not be created!\n");
 		goto ClassError;
 	}

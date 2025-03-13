@@ -10,11 +10,12 @@ echo -e "$GREEN BUILDING DRIVER $CLEAR"
 cd driver/pci
 make
 echo -e "$GREEN REMOVING OLD DRIVERS $CLEAR"
-sudo rmmod de2i_150
+sudo rmmod dei2-150
 echo -e "$GREEN INSERTING DRIVER TO KERNEL $CLEAR"
-sudo insmod de2i-150.ko
+sudo insmod dei2-150.ko
 cd ../..
 
+sudo mkdir -p /dev/mydev
 echo -e "$GREEN CHANGING DEVICE NODE PERMISSIONS $CLEAR"
 sudo chmod 666 /dev/mydev
 
