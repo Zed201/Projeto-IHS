@@ -177,6 +177,11 @@ module pcihellocore_mm_interconnect_0_router
 
 
 
+    // -------------------------------------------------------
+    // Write and read transaction signals
+    // -------------------------------------------------------
+    wire read_transaction;
+    assign read_transaction  = sink_data[PKT_TRANS_READ];
 
 
     pcihellocore_mm_interconnect_0_router_default_decode the_default_decode(
@@ -227,13 +232,13 @@ module pcihellocore_mm_interconnect_0_router
     end
 
     // ( 0xc060 .. 0xc070 )
-    if ( {address[RG:PAD5],{PAD5{1'b0}}} == 16'hc060   ) begin
+    if ( {address[RG:PAD5],{PAD5{1'b0}}} == 16'hc060  && read_transaction  ) begin
             src_channel = 9'b000010000;
             src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 5;
     end
 
     // ( 0xc080 .. 0xc090 )
-    if ( {address[RG:PAD6],{PAD6{1'b0}}} == 16'hc080   ) begin
+    if ( {address[RG:PAD6],{PAD6{1'b0}}} == 16'hc080  && read_transaction  ) begin
             src_channel = 9'b000100000;
             src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 6;
     end

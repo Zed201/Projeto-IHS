@@ -13,8 +13,8 @@ module pcihellocore (
 		output wire [31:0] pio_0_lcd_external_connection_export,       //       pio_0_lcd_external_connection.export
 		output wire [31:0] pio_1_display_l_external_connection_export, // pio_1_display_l_external_connection.export
 		output wire [31:0] pio_2_display_r_external_connection_export, // pio_2_display_r_external_connection.export
-		output wire [31:0] pio_3_switches_external_connection_export,  //  pio_3_switches_external_connection.export
-		output wire [31:0] pio_4_push_b_external_connection_export,    //    pio_4_push_b_external_connection.export
+		input  wire [31:0] pio_3_switches_external_connection_export,  //  pio_3_switches_external_connection.export
+		input  wire [31:0] pio_4_push_b_external_connection_export,    //    pio_4_push_b_external_connection.export
 		output wire [31:0] pio_5_r_leds_external_connection_export,    //    pio_5_r_leds_external_connection.export
 		output wire [31:0] pio_6_g_leds_external_connection_export     //    pio_6_g_leds_external_connection.export
 	);
@@ -52,16 +52,10 @@ module pcihellocore (
 	wire   [1:0] mm_interconnect_0_pio_2_display_r_s1_address;       // mm_interconnect_0:pio_2_DISPLAY_R_s1_address -> pio_2_DISPLAY_R:address
 	wire         mm_interconnect_0_pio_2_display_r_s1_write;         // mm_interconnect_0:pio_2_DISPLAY_R_s1_write -> pio_2_DISPLAY_R:write_n
 	wire  [31:0] mm_interconnect_0_pio_2_display_r_s1_writedata;     // mm_interconnect_0:pio_2_DISPLAY_R_s1_writedata -> pio_2_DISPLAY_R:writedata
-	wire         mm_interconnect_0_pio_3_switches_s1_chipselect;     // mm_interconnect_0:pio_3_SWITCHES_s1_chipselect -> pio_3_SWITCHES:chipselect
 	wire  [31:0] mm_interconnect_0_pio_3_switches_s1_readdata;       // pio_3_SWITCHES:readdata -> mm_interconnect_0:pio_3_SWITCHES_s1_readdata
 	wire   [1:0] mm_interconnect_0_pio_3_switches_s1_address;        // mm_interconnect_0:pio_3_SWITCHES_s1_address -> pio_3_SWITCHES:address
-	wire         mm_interconnect_0_pio_3_switches_s1_write;          // mm_interconnect_0:pio_3_SWITCHES_s1_write -> pio_3_SWITCHES:write_n
-	wire  [31:0] mm_interconnect_0_pio_3_switches_s1_writedata;      // mm_interconnect_0:pio_3_SWITCHES_s1_writedata -> pio_3_SWITCHES:writedata
-	wire         mm_interconnect_0_pio_4_push_b_s1_chipselect;       // mm_interconnect_0:pio_4_PUSH_B_s1_chipselect -> pio_4_PUSH_B:chipselect
 	wire  [31:0] mm_interconnect_0_pio_4_push_b_s1_readdata;         // pio_4_PUSH_B:readdata -> mm_interconnect_0:pio_4_PUSH_B_s1_readdata
 	wire   [1:0] mm_interconnect_0_pio_4_push_b_s1_address;          // mm_interconnect_0:pio_4_PUSH_B_s1_address -> pio_4_PUSH_B:address
-	wire         mm_interconnect_0_pio_4_push_b_s1_write;            // mm_interconnect_0:pio_4_PUSH_B_s1_write -> pio_4_PUSH_B:write_n
-	wire  [31:0] mm_interconnect_0_pio_4_push_b_s1_writedata;        // mm_interconnect_0:pio_4_PUSH_B_s1_writedata -> pio_4_PUSH_B:writedata
 	wire         mm_interconnect_0_pio_5_r_leds_s1_chipselect;       // mm_interconnect_0:pio_5_R_LEDS_s1_chipselect -> pio_5_R_LEDS:chipselect
 	wire  [31:0] mm_interconnect_0_pio_5_r_leds_s1_readdata;         // pio_5_R_LEDS:readdata -> mm_interconnect_0:pio_5_R_LEDS_s1_readdata
 	wire   [1:0] mm_interconnect_0_pio_5_r_leds_s1_address;          // mm_interconnect_0:pio_5_R_LEDS_s1_address -> pio_5_R_LEDS:address
@@ -316,7 +310,7 @@ module pcihellocore (
 		.out_port   (pio_0_lcd_external_connection_export)       // external_connection.export
 	);
 
-	pcihellocore_pio_0_LCD pio_1_display_l (
+	pcihellocore_pio_1_DISPLAY_L pio_1_display_l (
 		.clk        (pcie_hard_ip_0_pcie_core_clk_clk),                //                 clk.clk
 		.reset_n    (~rst_controller_reset_out_reset),                 //               reset.reset_n
 		.address    (mm_interconnect_0_pio_1_display_l_s1_address),    //                  s1.address
@@ -327,7 +321,7 @@ module pcihellocore (
 		.out_port   (pio_1_display_l_external_connection_export)       // external_connection.export
 	);
 
-	pcihellocore_pio_0_LCD pio_2_display_r (
+	pcihellocore_pio_1_DISPLAY_L pio_2_display_r (
 		.clk        (pcie_hard_ip_0_pcie_core_clk_clk),                //                 clk.clk
 		.reset_n    (~rst_controller_reset_out_reset),                 //               reset.reset_n
 		.address    (mm_interconnect_0_pio_2_display_r_s1_address),    //                  s1.address
@@ -338,29 +332,23 @@ module pcihellocore (
 		.out_port   (pio_2_display_r_external_connection_export)       // external_connection.export
 	);
 
-	pcihellocore_pio_0_LCD pio_3_switches (
-		.clk        (pcie_hard_ip_0_pcie_core_clk_clk),               //                 clk.clk
-		.reset_n    (~rst_controller_reset_out_reset),                //               reset.reset_n
-		.address    (mm_interconnect_0_pio_3_switches_s1_address),    //                  s1.address
-		.write_n    (~mm_interconnect_0_pio_3_switches_s1_write),     //                    .write_n
-		.writedata  (mm_interconnect_0_pio_3_switches_s1_writedata),  //                    .writedata
-		.chipselect (mm_interconnect_0_pio_3_switches_s1_chipselect), //                    .chipselect
-		.readdata   (mm_interconnect_0_pio_3_switches_s1_readdata),   //                    .readdata
-		.out_port   (pio_3_switches_external_connection_export)       // external_connection.export
+	pcihellocore_pio_3_SWITCHES pio_3_switches (
+		.clk      (pcie_hard_ip_0_pcie_core_clk_clk),             //                 clk.clk
+		.reset_n  (~rst_controller_reset_out_reset),              //               reset.reset_n
+		.address  (mm_interconnect_0_pio_3_switches_s1_address),  //                  s1.address
+		.readdata (mm_interconnect_0_pio_3_switches_s1_readdata), //                    .readdata
+		.in_port  (pio_3_switches_external_connection_export)     // external_connection.export
 	);
 
-	pcihellocore_pio_0_LCD pio_4_push_b (
-		.clk        (pcie_hard_ip_0_pcie_core_clk_clk),             //                 clk.clk
-		.reset_n    (~rst_controller_reset_out_reset),              //               reset.reset_n
-		.address    (mm_interconnect_0_pio_4_push_b_s1_address),    //                  s1.address
-		.write_n    (~mm_interconnect_0_pio_4_push_b_s1_write),     //                    .write_n
-		.writedata  (mm_interconnect_0_pio_4_push_b_s1_writedata),  //                    .writedata
-		.chipselect (mm_interconnect_0_pio_4_push_b_s1_chipselect), //                    .chipselect
-		.readdata   (mm_interconnect_0_pio_4_push_b_s1_readdata),   //                    .readdata
-		.out_port   (pio_4_push_b_external_connection_export)       // external_connection.export
+	pcihellocore_pio_3_SWITCHES pio_4_push_b (
+		.clk      (pcie_hard_ip_0_pcie_core_clk_clk),           //                 clk.clk
+		.reset_n  (~rst_controller_reset_out_reset),            //               reset.reset_n
+		.address  (mm_interconnect_0_pio_4_push_b_s1_address),  //                  s1.address
+		.readdata (mm_interconnect_0_pio_4_push_b_s1_readdata), //                    .readdata
+		.in_port  (pio_4_push_b_external_connection_export)     // external_connection.export
 	);
 
-	pcihellocore_pio_0_LCD pio_5_r_leds (
+	pcihellocore_pio_1_DISPLAY_L pio_5_r_leds (
 		.clk        (pcie_hard_ip_0_pcie_core_clk_clk),             //                 clk.clk
 		.reset_n    (~rst_controller_reset_out_reset),              //               reset.reset_n
 		.address    (mm_interconnect_0_pio_5_r_leds_s1_address),    //                  s1.address
@@ -371,7 +359,7 @@ module pcihellocore (
 		.out_port   (pio_5_r_leds_external_connection_export)       // external_connection.export
 	);
 
-	pcihellocore_pio_0_LCD pio_6_g_leds (
+	pcihellocore_pio_1_DISPLAY_L pio_6_g_leds (
 		.clk        (pcie_hard_ip_0_pcie_core_clk_clk),             //                 clk.clk
 		.reset_n    (~rst_controller_reset_out_reset),              //               reset.reset_n
 		.address    (mm_interconnect_0_pio_6_g_leds_s1_address),    //                  s1.address
@@ -428,15 +416,9 @@ module pcihellocore (
 		.pio_2_DISPLAY_R_s1_writedata                (mm_interconnect_0_pio_2_display_r_s1_writedata),     //                                      .writedata
 		.pio_2_DISPLAY_R_s1_chipselect               (mm_interconnect_0_pio_2_display_r_s1_chipselect),    //                                      .chipselect
 		.pio_3_SWITCHES_s1_address                   (mm_interconnect_0_pio_3_switches_s1_address),        //                     pio_3_SWITCHES_s1.address
-		.pio_3_SWITCHES_s1_write                     (mm_interconnect_0_pio_3_switches_s1_write),          //                                      .write
 		.pio_3_SWITCHES_s1_readdata                  (mm_interconnect_0_pio_3_switches_s1_readdata),       //                                      .readdata
-		.pio_3_SWITCHES_s1_writedata                 (mm_interconnect_0_pio_3_switches_s1_writedata),      //                                      .writedata
-		.pio_3_SWITCHES_s1_chipselect                (mm_interconnect_0_pio_3_switches_s1_chipselect),     //                                      .chipselect
 		.pio_4_PUSH_B_s1_address                     (mm_interconnect_0_pio_4_push_b_s1_address),          //                       pio_4_PUSH_B_s1.address
-		.pio_4_PUSH_B_s1_write                       (mm_interconnect_0_pio_4_push_b_s1_write),            //                                      .write
 		.pio_4_PUSH_B_s1_readdata                    (mm_interconnect_0_pio_4_push_b_s1_readdata),         //                                      .readdata
-		.pio_4_PUSH_B_s1_writedata                   (mm_interconnect_0_pio_4_push_b_s1_writedata),        //                                      .writedata
-		.pio_4_PUSH_B_s1_chipselect                  (mm_interconnect_0_pio_4_push_b_s1_chipselect),       //                                      .chipselect
 		.pio_5_R_LEDS_s1_address                     (mm_interconnect_0_pio_5_r_leds_s1_address),          //                       pio_5_R_LEDS_s1.address
 		.pio_5_R_LEDS_s1_write                       (mm_interconnect_0_pio_5_r_leds_s1_write),            //                                      .write
 		.pio_5_R_LEDS_s1_readdata                    (mm_interconnect_0_pio_5_r_leds_s1_readdata),         //                                      .readdata

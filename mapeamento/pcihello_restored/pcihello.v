@@ -135,14 +135,12 @@ wire [31:0]	gleds;
 			.pio_4_push_b_external_connection_export(bpush),
 			.pio_5_r_leds_external_connection_export(rleds),
 			.pio_6_g_leds_external_connection_export(gleds),
-
-
     );
 	 
 
 
 	//////////// FAN Control //////////
-assign FAN_CTRL = 1'b0; // turn off FAN
+assign FAN_CTRL = 1'b1; // turn off FAN
 /*
 assign HEX0 = hexbus[ 6: 0];
 assign HEX1 = hexbus[14: 8];
@@ -170,7 +168,7 @@ assign HEX7 = rdis[27:21];
 
 assign bpush[3:0] = KEY;
 
-assign swi[17:0] = SW;
+assign swi[17:0] = SW[17:0];
 
 assign LEDG = gleds[8:0];
 assign LEDR = rleds[17:0];

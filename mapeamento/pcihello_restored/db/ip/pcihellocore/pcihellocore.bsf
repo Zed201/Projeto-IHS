@@ -59,6 +59,20 @@ refer to the applicable agreement for further details.
 		(line (pt 0 208)(pt 272 208)(line_width 1))
 	)
 	(port
+		(pt 0 408)
+		(input)
+		(text "pio_3_switches_external_connection_export[31..0]" (rect 0 0 198 12)(font "Arial" (font_size 8)))
+		(text "pio_3_switches_external_connection_export[31..0]" (rect 4 397 292 408)(font "Arial" (font_size 8)))
+		(line (pt 0 408)(pt 272 408)(line_width 3))
+	)
+	(port
+		(pt 0 448)
+		(input)
+		(text "pio_4_push_b_external_connection_export[31..0]" (rect 0 0 195 12)(font "Arial" (font_size 8)))
+		(text "pio_4_push_b_external_connection_export[31..0]" (rect 4 437 280 448)(font "Arial" (font_size 8)))
+		(line (pt 0 448)(pt 272 448)(line_width 3))
+	)
+	(port
 		(pt 0 248)
 		(output)
 		(text "pcie_hard_ip_0_tx_out_tx_dataout_0" (rect 0 0 149 12)(font "Arial" (font_size 8)))
@@ -85,20 +99,6 @@ refer to the applicable agreement for further details.
 		(text "pio_2_display_r_external_connection_export[31..0]" (rect 0 0 201 12)(font "Arial" (font_size 8)))
 		(text "pio_2_display_r_external_connection_export[31..0]" (rect 4 357 298 368)(font "Arial" (font_size 8)))
 		(line (pt 0 368)(pt 272 368)(line_width 3))
-	)
-	(port
-		(pt 0 408)
-		(output)
-		(text "pio_3_switches_external_connection_export[31..0]" (rect 0 0 198 12)(font "Arial" (font_size 8)))
-		(text "pio_3_switches_external_connection_export[31..0]" (rect 4 397 292 408)(font "Arial" (font_size 8)))
-		(line (pt 0 408)(pt 272 408)(line_width 3))
-	)
-	(port
-		(pt 0 448)
-		(output)
-		(text "pio_4_push_b_external_connection_export[31..0]" (rect 0 0 195 12)(font "Arial" (font_size 8)))
-		(text "pio_4_push_b_external_connection_export[31..0]" (rect 4 437 280 448)(font "Arial" (font_size 8)))
-		(line (pt 0 448)(pt 272 448)(line_width 3))
 	)
 	(port
 		(pt 0 488)

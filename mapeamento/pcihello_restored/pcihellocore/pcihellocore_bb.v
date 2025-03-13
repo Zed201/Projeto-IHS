@@ -23,8 +23,8 @@ module pcihellocore (
 	output	[31:0]	pio_0_lcd_external_connection_export;
 	output	[31:0]	pio_1_display_l_external_connection_export;
 	output	[31:0]	pio_2_display_r_external_connection_export;
-	output	[31:0]	pio_3_switches_external_connection_export;
-	output	[31:0]	pio_4_push_b_external_connection_export;
+	input	[31:0]	pio_3_switches_external_connection_export;
+	input	[31:0]	pio_4_push_b_external_connection_export;
 	output	[31:0]	pio_5_r_leds_external_connection_export;
 	output	[31:0]	pio_6_g_leds_external_connection_export;
 endmodule

@@ -1,5 +1,5 @@
 Restore Archived Project report for pcihello
-Tue Mar 04 20:26:02 2025
+Thu Mar 13 13:07:10 2025
 Quartus Prime Version 17.1.0 Build 590 10/25/2017 SJ Lite Edition
 
 
@@ -36,7 +36,7 @@ refer to the applicable agreement for further details.
 +-------------------------------------------------------------------------+
 ; Restore Archived Project Summary                                        ;
 +---------------------------------+---------------------------------------+
-; Restore Archived Project Status ; Successful - Tue Mar 04 20:26:02 2025 ;
+; Restore Archived Project Status ; Successful - Thu Mar 13 13:07:10 2025 ;
 ; Revision Name                   ; pcihello                              ;
 ; Top-level Entity Name           ; pcihello                              ;
 ; Family                          ; Cyclone IV GX                         ;
@@ -46,18 +46,26 @@ refer to the applicable agreement for further details.
 +-----------------------------------+
 ; Restore Archived Project Messages ;
 +-----------------------------------+
-Info: Successfully restored 'C:/Users/luizg/Downloads/mapeamento-0.2-alunos/mapeamento/pcihello.qar' into the 'C:/Users/luizg/Downloads/mapeamento-0.2-alunos/mapeamento/pcihello_restored/' directory
+Warning (292006): Can't contact license server "27200@pesqueira.cin.ufpe.br" -- this server will be ignored.
+Info: Successfully restored 'D:/Users/lgpss/Desktop/Projeto-IHS/mapeamento/pcihello.qar' into the 'D:/Users/lgpss/Desktop/Projeto-IHS/mapeamento/pcihello_restored/' directory
 Info: Generated report 'pcihello.restore.rpt'
-Info (23030): Evaluation of Tcl script c:/intelfpga_lite/17.1/quartus/common/tcl/apps/qpm/qar.tcl was successful
-Info: Quartus Prime Shell was successful. 0 errors, 2 warnings
-    Info: Peak virtual memory: 4824 megabytes
-    Info: Processing ended: Tue Mar 04 20:26:02 2025
-    Info: Elapsed time: 00:00:02
+Info (23030): Evaluation of Tcl script c:/altera/17.1/quartus/common/tcl/apps/qpm/qar.tcl was successful
+Info: Quartus Prime Shell was successful. 0 errors, 105 warnings
+    Info: Peak virtual memory: 4866 megabytes
+    Info: Processing ended: Thu Mar 13 13:07:10 2025
+    Info: Elapsed time: 00:00:01
     Info: Total CPU time (on all processors): 00:00:01
 
 
++----------------+
+; Files Restored ;
++----------------+
+; File Name      ;
++----------------+
+
+
 +-----------------------------------------------------------------------------------------------------------+
-; Files Restored                                                                                            ;
+; Files Not Restored                                                                                        ;
 +-----------------------------------------------------------------------------------------------------------+
 ; File Name                                                                                                 ;
 +-----------------------------------------------------------------------------------------------------------+
@@ -68,6 +76,7 @@ Info: Quartus Prime Shell was successful. 0 errors, 2 warnings
 ; pcihello.cmp                                                                                              ;
 ; pcihello.qpf                                                                                              ;
 ; pcihello.qsf                                                                                              ;
+; pcihello.sdc                                                                                              ;
 ; pcihello.v                                                                                                ;
 ; pcihello_assignment_defaults.qdf                                                                          ;
 ; pcihellocore.cmp                                                                                          ;
@@ -164,14 +173,5 @@ Info: Quartus Prime Shell was successful. 0 errors, 2 warnings
 ; pcihellocore/synthesis/submodules/pcihellocore_rsp_xbar_demux.sv                                          ;
 ; pcihellocore/synthesis/submodules/pcihellocore_rsp_xbar_mux.sv                                            ;
 +-----------------------------------------------------------------------------------------------------------+
-
-
-+--------------------+
-; Files Not Restored ;
-+--------------------+
-; File Name          ;
-+--------------------+
-; pcihello.sdc       ;
-+--------------------+
 
 

@@ -283,10 +283,22 @@ set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
 set_global_assignment -name STRATIX_DEVICE_IO_STANDARD "2.5 V"
-set_global_assignment -name SEARCH_PATH db/ip/pcihellocore/ -tag from_archive
-set_global_assignment -name SEARCH_PATH db/ip/pcihellocore/submodules/ -tag from_archive
-set_global_assignment -name SEARCH_PATH pcihellocore/synthesis/ -tag from_archive
-set_global_assignment -name SEARCH_PATH pcihellocore/synthesis/submodules/ -tag from_archive
+set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
+set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
+set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
+set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
+set_location_assignment PIN_AE4 -to LCD_DATA[7]
+set_location_assignment PIN_AH4 -to LCD_DATA[6]
+set_location_assignment PIN_AE3 -to LCD_DATA[5]
+set_location_assignment PIN_AH2 -to LCD_DATA[4]
+set_location_assignment PIN_AE5 -to LCD_DATA[3]
+set_location_assignment PIN_AH3 -to LCD_DATA[2]
+set_location_assignment PIN_AF3 -to LCD_DATA[1]
+set_location_assignment PIN_AG4 -to LCD_DATA[0]
+set_location_assignment PIN_AF4 -to LCD_EN
+set_location_assignment PIN_AF27 -to LCD_ON
+set_location_assignment PIN_AG3 -to LCD_RS
+set_location_assignment PIN_AJ3 -to LCD_RW
 set_global_assignment -name QSYS_FILE pcihellocore.qsys
 set_global_assignment -name SOURCE_FILE pcihellocore.cmp
 set_global_assignment -name SOURCE_FILE pcihello.cmp
@@ -348,20 +360,8 @@ set_global_assignment -name VERILOG_FILE pcihellocore/synthesis/submodules/alter
 set_global_assignment -name VERILOG_FILE pcihellocore/synthesis/submodules/altera_avalon_sc_fifo.v
 set_global_assignment -name VERILOG_FILE pcihellocore/synthesis/pcihellocore.v
 set_global_assignment -name SDC_FILE pcihello.SDC
-set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
-set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
-set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
-set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
-set_location_assignment PIN_AE4 -to LCD_DATA[7]
-set_location_assignment PIN_AH4 -to LCD_DATA[6]
-set_location_assignment PIN_AE3 -to LCD_DATA[5]
-set_location_assignment PIN_AH2 -to LCD_DATA[4]
-set_location_assignment PIN_AE5 -to LCD_DATA[3]
-set_location_assignment PIN_AH3 -to LCD_DATA[2]
-set_location_assignment PIN_AF3 -to LCD_DATA[1]
-set_location_assignment PIN_AG4 -to LCD_DATA[0]
-set_location_assignment PIN_AF4 -to LCD_EN
-set_location_assignment PIN_AF27 -to LCD_ON
-set_location_assignment PIN_AG3 -to LCD_RS
-set_location_assignment PIN_AJ3 -to LCD_RW
+set_global_assignment -name SEARCH_PATH db/ip/pcihellocore/ -tag from_archive
+set_global_assignment -name SEARCH_PATH db/ip/pcihellocore/submodules/ -tag from_archive
+set_global_assignment -name SEARCH_PATH pcihellocore/synthesis/ -tag from_archive
+set_global_assignment -name SEARCH_PATH pcihellocore/synthesis/submodules/ -tag from_archive
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

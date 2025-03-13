@@ -52,15 +52,9 @@ module pcihellocore_mm_interconnect_0 (
 		output wire [31:0] pio_2_DISPLAY_R_s1_writedata,                //                                      .writedata
 		output wire        pio_2_DISPLAY_R_s1_chipselect,               //                                      .chipselect
 		output wire [1:0]  pio_3_SWITCHES_s1_address,                   //                     pio_3_SWITCHES_s1.address
-		output wire        pio_3_SWITCHES_s1_write,                     //                                      .write
 		input  wire [31:0] pio_3_SWITCHES_s1_readdata,                  //                                      .readdata
-		output wire [31:0] pio_3_SWITCHES_s1_writedata,                 //                                      .writedata
-		output wire        pio_3_SWITCHES_s1_chipselect,                //                                      .chipselect
 		output wire [1:0]  pio_4_PUSH_B_s1_address,                     //                       pio_4_PUSH_B_s1.address
-		output wire        pio_4_PUSH_B_s1_write,                       //                                      .write
 		input  wire [31:0] pio_4_PUSH_B_s1_readdata,                    //                                      .readdata
-		output wire [31:0] pio_4_PUSH_B_s1_writedata,                   //                                      .writedata
-		output wire        pio_4_PUSH_B_s1_chipselect,                  //                                      .chipselect
 		output wire [1:0]  pio_5_R_LEDS_s1_address,                     //                       pio_5_R_LEDS_s1.address
 		output wire        pio_5_R_LEDS_s1_write,                       //                                      .write
 		input  wire [31:0] pio_5_R_LEDS_s1_readdata,                    //                                      .readdata
@@ -1128,11 +1122,10 @@ module pcihellocore_mm_interconnect_0 (
 		.uav_lock               (pio_3_switches_s1_agent_m0_lock),             //                         .lock
 		.uav_debugaccess        (pio_3_switches_s1_agent_m0_debugaccess),      //                         .debugaccess
 		.av_address             (pio_3_SWITCHES_s1_address),                   //      avalon_anti_slave_0.address
-		.av_write               (pio_3_SWITCHES_s1_write),                     //                         .write
 		.av_readdata            (pio_3_SWITCHES_s1_readdata),                  //                         .readdata
-		.av_writedata           (pio_3_SWITCHES_s1_writedata),                 //                         .writedata
-		.av_chipselect          (pio_3_SWITCHES_s1_chipselect),                //                         .chipselect
+		.av_write               (),                                            //              (terminated)
 		.av_read                (),                                            //              (terminated)
+		.av_writedata           (),                                            //              (terminated)
 		.av_begintransfer       (),                                            //              (terminated)
 		.av_beginbursttransfer  (),                                            //              (terminated)
 		.av_burstcount          (),                                            //              (terminated)
@@ -1141,6 +1134,7 @@ module pcihellocore_mm_interconnect_0 (
 		.av_waitrequest         (1'b0),                                        //              (terminated)
 		.av_writebyteenable     (),                                            //              (terminated)
 		.av_lock                (),                                            //              (terminated)
+		.av_chipselect          (),                                            //              (terminated)
 		.av_clken               (),                                            //              (terminated)
 		.uav_clken              (1'b0),                                        //              (terminated)
 		.av_debugaccess         (),                                            //              (terminated)
@@ -1192,11 +1186,10 @@ module pcihellocore_mm_interconnect_0 (
 		.uav_lock               (pio_4_push_b_s1_agent_m0_lock),               //                         .lock
 		.uav_debugaccess        (pio_4_push_b_s1_agent_m0_debugaccess),        //                         .debugaccess
 		.av_address             (pio_4_PUSH_B_s1_address),                     //      avalon_anti_slave_0.address
-		.av_write               (pio_4_PUSH_B_s1_write),                       //                         .write
 		.av_readdata            (pio_4_PUSH_B_s1_readdata),                    //                         .readdata
-		.av_writedata           (pio_4_PUSH_B_s1_writedata),                   //                         .writedata
-		.av_chipselect          (pio_4_PUSH_B_s1_chipselect),                  //                         .chipselect
+		.av_write               (),                                            //              (terminated)
 		.av_read                (),                                            //              (terminated)
+		.av_writedata           (),                                            //              (terminated)
 		.av_begintransfer       (),                                            //              (terminated)
 		.av_beginbursttransfer  (),                                            //              (terminated)
 		.av_burstcount          (),                                            //              (terminated)
@@ -1205,6 +1198,7 @@ module pcihellocore_mm_interconnect_0 (
 		.av_waitrequest         (1'b0),                                        //              (terminated)
 		.av_writebyteenable     (),                                            //              (terminated)
 		.av_lock                (),                                            //              (terminated)
+		.av_chipselect          (),                                            //              (terminated)
 		.av_clken               (),                                            //              (terminated)
 		.uav_clken              (1'b0),                                        //              (terminated)
 		.av_debugaccess         (),                                            //              (terminated)
