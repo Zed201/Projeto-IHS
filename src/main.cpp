@@ -10,6 +10,7 @@
 
 // ioctl commands defined for the pci driver header
 #include "ioctl_cmds.h"
+#include "lcd.h"
 
 int main(int argc, char** argv)
 {
@@ -32,10 +33,9 @@ int main(int argc, char** argv)
 	printf("new data: 0x%X\n", data);
 	printf("read %d bytes\n", retval);
 
-	ioctl(fd, WR_LCD_DISPLAY);
-	retval = write(fd, &data, sizeof(data));
-	printf("wrote %d bytes\n", retval);
-
+	lcd_init (fd);
+	lcd_string ("hello word");
+	
 	ioctl(fd, WR_RED_LEDS);
 	retval = write(fd, &data, sizeof(data));
 	printf("wrote %d bytes\n", retval);
@@ -45,6 +45,9 @@ int main(int argc, char** argv)
 		retval = write(fd, &i, sizeof(i));
 		sleep(1);
 	}
+	
+	lcd_set_cursor(2, 0);
+	lcd_string ("finalizado!");
 
 	ioctl(fd, RD_SWITCHES);
 	retval = read(fd, &data, sizeof(data));
