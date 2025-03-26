@@ -6,18 +6,60 @@
 #include <sys/ioctl.h>	/* ioctl() */
 
 static int file_d = 0;
+int current_R = 0;
+int current_L = 0;
 
 void init_7seg(int fd){
 	file_d = fd;
-	int reset = 0xffffffff;
-	ioctl(file_d, WR_L_DISPLAY);
-	write(file_d, &reset, sizeof(reset));
-	
-	ioctl(file_d, WR_R_DISPLAY);
+	reset(0);
+	reset(1);
+}
+
+void reset(int idx){
+	int reset = 0xfffffff;
+	// 0 vai ser o da direita da frente da placa e 1 o da esquerda
+	if (idx) {
+		ioctl(file_d, WR_R_DISPLAY);
+	} else {
+		ioctl(file_d, WR_L_DISPLAY);
+	}
 	write(file_d, &reset, sizeof(reset));
 }
-int seven_seg_write(int number){
+void seven_seg_write(int seg, int number, int _reset){ 
+	// o seg e o index do seg comecando da direita de frente para a placa
+	// em 0-7, o reset ele reseta os outros ou nao
+	// R e L ta ao contrario, de costas para a placa, frente para as saidas de cabos
+	// se reset 1 ele limpa se nao ele mantem os outros
+	if (_reset){
+		current_L = 0;
+		current_R = 0;
+		reset(1);
+		reset(0);
+	}
+	if (seg > 7){
+		return;
+	}
+		
+	if(seg > 3){
+		ioctl(file_d, WR_R_DISPLAY);
+	} else {
+		ioctl(file_d, WR_L_DISPLAY);
+	}
 	
+	int d = convert_digit(number) << (7 * (seg % 4));
+	int mask = ~(0xff << (7 * (seg % 4))); // para manter ou nao apenas o digto escolhido
+	
+	if (seg > 3){
+		d = (current_L & mask) | d;
+		current_L = d;
+	} else {
+		d = (current_R & mask) | d;
+		current_R = d;
+	} 
+	
+	d = ~d;
+	write(file_d, &d, sizeof(d));
+
 }
 
 int convert_digit(int n){
@@ -55,5 +97,5 @@ int convert_digit(int n){
 			ret = 0b0111111;
 			break;
 	}
-	return ~ret;
+	return ret;
 }

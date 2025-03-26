@@ -43,11 +43,10 @@ int main(int argc, char** argv)
 	
 	//lcd_set_cursor(2, 0);
 	//lcd_string ("finalizado!");
-	int d = 0;
-	for(int i =0; i <= 9; i++){
-		d = convert_digit(i);
-		printf("%d\n",d);
-		write(fd, &d, sizeof(d));
+	init_7seg(fd);
+	for(int i =0; i < 8; i++){
+		printf("%d\n", i);
+		seven_seg_write(i, i,1);
 		sleep(1);
 	}
 	/*ioctl(fd, RD_SWITCHES);

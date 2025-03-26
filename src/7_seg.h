@@ -3,8 +3,9 @@
 
 
 void init_7seg(int fd);
-int seven_seg_write(int number);
+void seven_seg_write(int seg, int number, int reset);
 int seven_seg_write_str(char* number);
 int convert_digit(int n);
+void reset(int idx);
 
 #endif
