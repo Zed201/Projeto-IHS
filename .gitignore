@@ -11,3 +11,4 @@ __pycache__/
 *.mod
 *.o
 *.order
+target/
