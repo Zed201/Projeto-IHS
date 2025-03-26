@@ -11,20 +11,12 @@
 // ioctl commands defined for the pci driver header
 #include "ioctl_cmds.h"
 #include "lcd.h"
+#include "7_seg.h"
 
 int main(int argc, char** argv)
 {
 	int fd, retval;
 	fd = open("/dev/mydev", O_RDWR);
-	/*if (argc < 2) {
-		printf("Syntax: %s <device file path>\n", argv[0]);
-		return -EINVAL;
-	}
-
-	if ((fd = open(argv[1], O_RDWR)) < 0) {
-		fprintf(stderr, "Error opening file %s\n", argv[1]);
-		return -EBUSY;
-	}*/
 
 	unsigned int data = 0b00000000000000000000100000010000;
 
@@ -32,11 +24,14 @@ int main(int argc, char** argv)
 	retval = read(fd, &data, sizeof(data));
 	printf("new data: 0x%X\n", data);
 	printf("read %d bytes\n", retval);
-
-	lcd_init (fd);
-	lcd_string ("hello word");
 	
-	ioctl(fd, WR_RED_LEDS);
+	init_7seg(fd);
+	//lcd_init (fd);
+	//lcd_clear();
+	//lcd_set_cursor(1, 0);
+	//lcd_string ("hello word");
+	
+	/*ioctl(fd, WR_RED_LEDS);
 	retval = write(fd, &data, sizeof(data));
 	printf("wrote %d bytes\n", retval);
 
@@ -44,15 +39,21 @@ int main(int argc, char** argv)
 		ioctl(fd, WR_GREEN_LEDS);
 		retval = write(fd, &i, sizeof(i));
 		sleep(1);
-	}
+	}*/
 	
-	lcd_set_cursor(2, 0);
-	lcd_string ("finalizado!");
-
-	ioctl(fd, RD_SWITCHES);
+	//lcd_set_cursor(2, 0);
+	//lcd_string ("finalizado!");
+	int d = 0;
+	for(int i =0; i <= 9; i++){
+		d = convert_digit(i);
+		printf("%d\n",d);
+		write(fd, &d, sizeof(d));
+		sleep(1);
+	}
+	/*ioctl(fd, RD_SWITCHES);
 	retval = read(fd, &data, sizeof(data));
 	printf("new data: 0x%X\n", data);
-	printf("read %d bytes\n", retval);
+	printf("read %d bytes\n", retval);*/
 	close(fd);
 	return 0;
 }

@@ -10,9 +10,9 @@ static int file_id = 0;
 /* Quick helper function for single byte transfers */
 static void write_byte(uint16_t val) 
 {
-	val = val | 0x800;
+    val = val | 0x800;
     ioctl(file_id, WR_LCD_DISPLAY);
-	write(file_id, &val, sizeof(val));
+    write(file_id, &val, sizeof(val));
 }
 
 static void lcd_toggle_enable(uint8_t val, int mode) 
