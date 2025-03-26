@@ -9,13 +9,13 @@ static int file_d = 0;
 int current_R = 0;
 int current_L = 0;
 
-void init_7seg(int fd){
+void seg7_init(int fd){
 	file_d = fd;
-	reset(0);
-	reset(1);
+	seg7_reset(0);
+	seg7_reset(1);
 }
 
-void reset(int idx){
+void seg7_reset(int idx){
 	int reset = 0xfffffff;
 	// 0 vai ser o da direita da frente da placa e 1 o da esquerda
 	if (idx) {
@@ -25,7 +25,7 @@ void reset(int idx){
 	}
 	write(file_d, &reset, sizeof(reset));
 }
-void seven_seg_write(int seg, int number, int _reset){ 
+void seg7_write_single(int seg, int number, int _reset){ 
 	// o seg e o index do seg comecando da direita de frente para a placa
 	// em 0-7, o reset ele reseta os outros ou nao
 	// R e L ta ao contrario, de costas para a placa, frente para as saidas de cabos
@@ -33,8 +33,8 @@ void seven_seg_write(int seg, int number, int _reset){
 	if (_reset){
 		current_L = 0;
 		current_R = 0;
-		reset(1);
-		reset(0);
+		seg7_reset(1);
+		seg7_reset(0);
 	}
 	if (seg > 7){
 		return;
@@ -46,7 +46,7 @@ void seven_seg_write(int seg, int number, int _reset){
 		ioctl(file_d, WR_L_DISPLAY);
 	}
 	
-	int d = convert_digit(number) << (7 * (seg % 4));
+	int d = seg7_convert_digit(number) << (7 * (seg % 4));
 	int mask = ~(0xff << (7 * (seg % 4))); // para manter ou nao apenas o digto escolhido
 	
 	if (seg > 3){
@@ -62,10 +62,10 @@ void seven_seg_write(int seg, int number, int _reset){
 
 }
 
-int convert_digit(int n){
+int seg7_convert_digit(int n){
 	int ret = 0;
 	switch (n){
-		// segmentos estao na ordem gfedcba
+		
 		case 1:
 			ret = 0b0000110;
 			break;
@@ -92,6 +92,25 @@ int convert_digit(int n){
 			break;
 		case 9:
 			ret = 0b1100111;
+			break;
+		// segmentos estao na ordem gfedcba
+		case 10: // A
+			ret = 0b1110111;
+			break;
+		case 11: //B
+			ret = 0b1111100;
+			break;
+		case 12: // C
+			ret = 0b0111001;
+			break;
+		case 13: // D
+			ret = 0b1011110;
+			break;
+		case 14: // E
+			ret = 0b1111001;
+			break;
+		case 15: // F
+			ret = 0b1110001;
 			break;
 		default:
 			ret = 0b0111111;

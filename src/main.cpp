@@ -25,7 +25,7 @@ int main(int argc, char** argv)
 	printf("new data: 0x%X\n", data);
 	printf("read %d bytes\n", retval);
 	
-	init_7seg(fd);
+	seg7_init(fd);
 	//lcd_init (fd);
 	//lcd_clear();
 	//lcd_set_cursor(1, 0);
@@ -43,10 +43,11 @@ int main(int argc, char** argv)
 	
 	//lcd_set_cursor(2, 0);
 	//lcd_string ("finalizado!");
-	init_7seg(fd);
-	for(int i =0; i < 8; i++){
-		printf("%d\n", i);
-		seven_seg_write(i, i,1);
+	int d = 0;
+	for(int i =0; i <= 0xf; i++){
+		d = ~seg7_convert_digit(i);
+		printf("%d\n",d);
+		write(fd, &d, sizeof(d));
 		sleep(1);
 	}
 	/*ioctl(fd, RD_SWITCHES);

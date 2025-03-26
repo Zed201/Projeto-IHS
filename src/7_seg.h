@@ -2,10 +2,12 @@
 #define SEVEN_SEG
 
 
-void init_7seg(int fd);
-void seven_seg_write(int seg, int number, int reset);
-int seven_seg_write_str(char* number);
-int convert_digit(int n);
-void reset(int idx);
+void seg7_init(int fd);
+void seg7_reset(int idx);
+void seg7_write_single(int seg, int number, int _reset);
+int seg7_convert_digit(int n);
+
+int seg7_write_str(char* number);
+int seg7_write(int number);
 
 #endif
