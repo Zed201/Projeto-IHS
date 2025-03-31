@@ -17,21 +17,21 @@ int main(int argc, char** argv)
 {
 	int fd, retval;
 	fd = open("/dev/mydev", O_RDWR);
+	seg7_init(fd);
+	//unsigned int data = 0b00000000000000000000100000010000;
 
-	unsigned int data = 0b00000000000000000000100000010000;
-
-	ioctl(fd, RD_PBUTTONS);
+	/*ioctl(fd, RD_PBUTTONS);
 	retval = read(fd, &data, sizeof(data));
 	printf("new data: 0x%X\n", data);
 	printf("read %d bytes\n", retval);
 	
-	seg7_init(fd);
-	//lcd_init (fd);
-	//lcd_clear();
-	//lcd_set_cursor(1, 0);
-	//lcd_string ("hello word");
 	
-	/*ioctl(fd, WR_RED_LEDS);
+	lcd_init (fd);
+	lcd_clear();
+	lcd_set_cursor(0, 0);
+	lcd_string ("hello word");
+	
+	ioctl(fd, WR_RED_LEDS);
 	retval = write(fd, &data, sizeof(data));
 	printf("wrote %d bytes\n", retval);
 
@@ -39,17 +39,24 @@ int main(int argc, char** argv)
 		ioctl(fd, WR_GREEN_LEDS);
 		retval = write(fd, &i, sizeof(i));
 		sleep(1);
-	}*/
-	
-	//lcd_set_cursor(2, 0);
-	//lcd_string ("finalizado!");
-	int d = 0;
-	for(int i =0; i <= 0xf; i++){
-		d = ~seg7_convert_digit(i);
-		printf("%d\n",d);
-		write(fd, &d, sizeof(d));
-		sleep(1);
 	}
+	
+	lcd_set_cursor(1, 0);
+	lcd_string ("finalizado!");*/
+	int d = 0;
+	/*for(int i =0; i <= 0xf; i++){
+		seg7_write_single(i % 8, i, 0);
+		d = ~seg7_convert_digit(i);
+		printf("%x->%d\n",d, i);
+		sleep(1);
+	}*/
+	seg7_switch_base(8);
+	while(1){
+		scanf("%d", &d);
+		printf("%d\n", d);
+		seg7_write(d);
+	}
+	
 	/*ioctl(fd, RD_SWITCHES);
 	retval = read(fd, &data, sizeof(data));
 	printf("new data: 0x%X\n", data);

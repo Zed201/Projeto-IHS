@@ -29,10 +29,12 @@ static void lcd_toggle_enable(uint8_t val, int mode)
 void lcd_init(int fd) 
 {
 	file_id = fd;
+	lcd_toggle_enable(0x08, LCD_COMMAND);
     lcd_toggle_enable(0x0f, LCD_COMMAND);
     lcd_toggle_enable(LCD_ENTRYMODESET | LCD_ENTRYLEFT, LCD_COMMAND);
     lcd_toggle_enable(LCD_FUNCTIONSET | 0x10 | LCD_2LINE, LCD_COMMAND);
     lcd_clear();
+    lcd_set_cursor(0, 0);
 }
 
 void lcd_clear(void) 

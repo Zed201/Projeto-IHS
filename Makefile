@@ -64,7 +64,6 @@ OUTFILES := $(BINDIR)/$(PROJECT) $(BUILDDIR)/$(PROJECT).lst
 .PHONY: all clean
 
 all: $(OBJDIR) $(BINDIR) $(OBJS) $(OUTFILES)
-	./target/release/app
 # targets for the dirs
 $(OBJDIR):
 	@mkdir -p $(OBJDIR)
@@ -123,3 +122,6 @@ clean:
 
 # include the dependency files, should be the last of the makefile
 -include $(DEPS)
+
+run: all
+	./target/release/app

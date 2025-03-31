@@ -1,6 +1,7 @@
 #ifndef SEVEN_SEG
 #define SEVEN_SEG
 
+
 void seg7_init(int fd);
 void seg7_reset(int idx);
 void seg7_write_single(int seg, int number, int _reset);
