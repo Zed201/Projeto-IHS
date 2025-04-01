@@ -302,7 +302,7 @@ static int __init my_pci_probe(struct pci_dev *dev, const struct pci_device_id *
 		pci_disable_device(dev);
 		return -EBUSY;
 	}
-
+/
 	/* map the BAR0 Physical address space to virtual space */
 	bar0_mmio = pci_iomap(dev, 0, bar_len);
 
